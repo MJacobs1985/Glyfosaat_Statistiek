@@ -1342,7 +1342,7 @@ plot(res, type = "tnull")
 
 
 #### GLYFOSAAT: BESCHRIJVING EN VISUALISATIE VAN DE DATA ----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 g1<-df%>%
   filter(Studie=="Knezevich and Hogan")%>%
   dplyr::select(Geslacht, Tumor, Dosering, N, Cases)%>%
@@ -1479,7 +1479,7 @@ CochranArmitageTest(dose, alternative = "two.sided")
 CochranArmitageTest(dose, alternative = "one.sided")
 
 
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 df%>%
   dplyr::select(Studie, Tumor)%>%
   distinct()%>%
@@ -1880,8 +1880,8 @@ df%>%
 
 
 #### GLYFOSAAT: EENZIJDIG EN TWEEZIJDIG TOETSEN ----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
-df_stats<-read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data_p_values.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
+df_stats<-read_excel("~/Studie_data_p_values.xlsx")
 rowSums(is.na(df))
 colSums(is.na(df))
 
@@ -2061,8 +2061,8 @@ df_pvalues_combined%>%
   
 
 #### GLYFOSAAT: EENZIJDIG EN TWEEZIJDIG TOETSEN: Wat als we meenemen wat we niet zagen? ----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
-df_stats<-read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data_p_values.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
+df_stats<-read_excel("~/Studie_data_p_values.xlsx")
 
 df%>%filter(Soort=="CD-1" & Geslacht=="Man" & Tumor=="Kidney Adenomas (original pathology)")%>%
   dplyr::select(Studie)%>%
@@ -2386,7 +2386,7 @@ CochranArmitageTest(dose, alternative = "one.sided")
 
 
 #### GLYFOSAAT: EENZIJDIG EN TWEEZIJDIG TOETSEN: Het probleem van meerdere testen ----
-df<-read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data_p_values.xlsx")
+df<-read_excel("~/Studie_data_p_values.xlsx")
 df%>%
   mutate(reported_p_value = as.numeric(reported_p_value))%>%
   count(reported_p_value)%>%
@@ -2554,7 +2554,7 @@ df%>%
 
 
 #### GLYFOSAAT: DOSE-RESPONSE ANALYSES - Non-lineaire dose-response analyse ----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 dose_response<-df%>%
   dplyr::select(Geslacht, Tumor, Dosering, N, Cases)%>%
   arrange(Dosering)%>%
@@ -2661,7 +2661,7 @@ par(mfrow=c(1,1), mar=c(3.2,3.2,.5,.5), mgp=c(2,.7,0))
 relpot(glys.m0_males, interval = "delta", bty="l")
 
 #### GLYFOSAAT: DOSE-RESPONSE ANALYSES - Lineaire dose-response analyse ----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 df%>%
   dplyr::select(Studie, Jaar, Geslacht, Dosering, Tumor, N, Cases, Duur)%>%
   group_by(Studie, Jaar, Duur, Geslacht, Dosering)%>%
@@ -2742,7 +2742,7 @@ df%>%
        subtitle="Per geslacht, diersoort en duur van de studie waarbij nul-dosering is weggelaten")
 
 #### GLYFOSAAT: DOSE-RESPONSE ANALYSES - Lineair Mixed Model
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 df_lmer<-df%>%
   dplyr::select(Studie, Jaar, Geslacht, Dosering, Tumor, N, Cases, Duur, Soort)%>%
   group_by(Studie, Jaar, Duur, Geslacht, Dosering, Soort)%>%
@@ -2795,7 +2795,7 @@ sjPlot::tab_model(fit)
 sjPlot::plot_model(fit, type = "pred", terms = c("Dosering_log [all]", "Geslacht", "Duur", "Soort"))
 
 #### GLYFOSAAT: DOSE-RESPONSE ANALYSES - BINOMIAAL MODEL----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 df%>%
   dplyr::select(Studie, Geslacht, Dosering, N, Cases)%>%
   group_by(Studie, Dosering, Geslacht)%>%
@@ -3012,7 +3012,7 @@ df_prop%>%
 
 
 #### GLYFOSAAT: DOSE-RESPONSE ANALYSES - BINOMIAAL MODEL- replicatie logistisch model Portier ----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 df_prop<-df%>%
   dplyr::select(Studie, Geslacht, Dosering, N, Cases, Soort, Tumor)%>%
   group_by(Studie, Dosering, Geslacht, Soort, Tumor)%>%
@@ -3199,7 +3199,7 @@ df_prop%>%
 
 
 #### GLYFOSAAT: DOSE-RESPONSE ANALYSES - POISSON MODEL----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 df%>%
   ggplot(aes(x=Cases))+
   geom_histogram(aes(y = ..density..), color = "#000000", fill = "grey", alpha=0.4)+
@@ -3312,7 +3312,7 @@ predict(fit,nd, type="response")
 
 
 #### GLYFOSAAT: DOSE-RESPONSE ANALYSES - NEGATIVE BINOMIAL----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 df_nb<-df%>%
   dplyr::select(Studie, Dosering, Cases, N, Duur, Geslacht, Soort)%>%
   group_by(Studie, Dosering, Geslacht, Soort)%>%
@@ -3350,7 +3350,7 @@ DHARMa::plotResiduals(simulationOutput, form=df_nb$Studie)
 DHARMa::plotResiduals(simulationOutput, form=df_nb$sum_N)
 
 #### GLYFOSAAT: DOSE-RESPONSE ANALYSES - ZERO-INFLATED & HURDLE MODELS POISSON----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 df_nb<-df%>%
   dplyr::select(Studie, Dosering, Cases, N, Duur, Geslacht, Soort)%>%
   group_by(Studie, Dosering, Geslacht, Soort)%>%
@@ -3561,7 +3561,7 @@ sjPlot::plot_models(fit.hnp.TMB.1,
 
 
 #### GLYFOSAAT: DOSE-RESPONSE ANALYSES - ZERO-INFLATED NEGATIVE BINOMIAL----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 df_nb<-df%>%
   dplyr::select(Studie, Dosering, Cases, N, Duur, Geslacht, Soort)%>%
   group_by(Studie, Dosering, Geslacht, Soort)%>%
@@ -3738,18 +3738,8 @@ sjPlot::plot_models(fit.hnnb.TMB.1,
                     #,grid = TRUE
 ) + theme_bw()#+theme(legend.position = "bottom")
 
-
-
-
-
-
-
-
-
-
-
 #### GLYFOSAAT: DOSE-RESPONSE ANALYSES - BAYESIAANSE ANALYSE  - Een simpele regressie ----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 df_lmer<-df%>%
   dplyr::select(Studie, Jaar, Geslacht, Dosering, Tumor, N, Cases, Duur, Soort)%>%
   group_by(Studie, Geslacht, Dosering)%>%
@@ -4076,7 +4066,7 @@ BF_Dosering_more <-brms::hypothesis(fit_mcmc_2,
                                     alpha=0.05)
 
 #### GLYFOSAAT: DOSE-RESPONSE ANALYSES - BAYESIAANSE ANALYSE  - Bayesiaanse analyse van het hurdle model ----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Data/Studie_data.xlsx")
 df_lmer<-df%>%
   dplyr::select(Studie, Jaar, Geslacht, Dosering, Tumor, N, Cases, Duur, Soort)%>%
   group_by(Studie, Geslacht, Dosering)%>%
@@ -4316,7 +4306,7 @@ df_lmer2 %>%
 
 
 #### GLYFOSAAT: DOSE-RESPONSE ANALYSES - BAYESIAANSE ANALYSE - Modelleren van de verandering: vóóraf vs. áchteraf ----
-df <- read_excel("~/MSJ/Projects/2024/Stichting Agrifacts/Pesticiden/Data/Studie_data.xlsx")
+df <- read_excel("~/Studie_data.xlsx")
 
 df%>%
   dplyr::select(Dosering, Cases)%>%
